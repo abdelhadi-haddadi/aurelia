@@ -5,12 +5,35 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
-    
+
+    <!-- Critical connections -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://api.stripe.com" />
     <link rel="dns-prefetch" href="https://assets.mixkit.co" />
+
+    <!-- Non-blocking Google Fonts (print trick = no render-block) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=DM+Sans:wght@400;500&family=Space+Grotesk:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=DM+Sans:wght@400;500&family=Space+Grotesk:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;700&display=swap"
+      />
+    </noscript>
+
+    <!-- Preload the hero LCP image so it competes with nothing -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1515562141207-7a88fb7ce33e?q=80&w=1920&auto=format&fit=crop"
+      fetchpriority="high"
+    />
 
     <title>AURELIA | High Jewelry Maison</title>
     <meta name="description" content="AURELIA Maison de Haute Joaillerie. Discover our collection of ethically sourced, masterfully crafted high jewelry masterpieces." />
@@ -23,4 +46,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

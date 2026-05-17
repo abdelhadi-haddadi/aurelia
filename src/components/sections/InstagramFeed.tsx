@@ -44,7 +44,7 @@ export const InstagramFeed = () => {
               transition={{ delay: i * 0.1 }}
               className="relative aspect-square overflow-hidden group"
             >
-              <img src={item.src} alt={item.alt} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
+              <img src={item.src} alt={item.alt} width={600} height={600} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
               <div aria-hidden="true" className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <Instagram className="text-white" size={24} strokeWidth={1} />
               </div>

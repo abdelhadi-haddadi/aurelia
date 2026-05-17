@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useStore } from '@/src/store/useStore';
@@ -15,10 +14,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const currentTheme = useStore((state) => state.theme);
 
   useEffect(() => {
-    // Initialize theme on mount
     setTheme(currentTheme);
 
-    // Initialize Lenis smooth scroll
+    // Lenis smooth scroll only on non-touch devices — it degrades mobile performance
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
     const lenis = new Lenis({
       duration: 1.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -34,12 +35,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-
-    gsap.ticker.lagSmoothing(0);
+    // Removed lagSmoothing(0) — it forced constant 60 FPS even on slow devices
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove(() => {});
     };
   }, []);
 

@@ -61,17 +61,12 @@ export const Hero = () => {
           loop
           playsInline
           preload="none"
+          poster="https://images.unsplash.com/photo-1515562141207-7a88fb7ce33e?q=80&w=1920&auto=format&fit=crop"
           aria-hidden="true"
           className="w-full h-full object-cover opacity-60"
+          style={{ willChange: 'transform' }}
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-diamonds-glittering-in-the-light-1925-large.mp4" type="video/mp4" />
-          <img
-            ref={imageRef}
-            src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce33e?q=80&w=2070&auto=format&fit=crop"
-            alt="Luxury jewelry — AURELIA high jewelry collection"
-            fetchPriority="high"
-            className="w-full h-full object-cover opacity-80"
-          />
         </video>
       </motion.div>
 

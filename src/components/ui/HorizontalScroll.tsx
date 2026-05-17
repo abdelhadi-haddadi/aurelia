@@ -9,19 +9,20 @@ export const HorizontalScroll = ({ children, title }: { children: React.ReactNod
   useEffect(() => {
     const pin = gsap.fromTo(
       sectionRef.current,
+      { translateX: 0 },
       {
-        translateX: 0,
-      },
-      {
-        translateX: "-300vw",
-        ease: "none",
+        translateX: '-300vw',
+        ease: 'none',
         duration: 1,
         scrollTrigger: {
           trigger: triggerRef.current,
-          start: "top top",
-          end: "2000 top",
+          start: 'top top',
+          end: '2000 top',
           scrub: 0.6,
           pin: true,
+          anticipatePin: 1,       // Pre-calculate pin position → fewer layout recalcs
+          invalidateOnRefresh: true,
+          fastScrollEnd: true,    // Skip intermediate frames on fast scroll
         },
       }
     );
@@ -33,8 +34,12 @@ export const HorizontalScroll = ({ children, title }: { children: React.ReactNod
   return (
     <section className="overflow-hidden">
       <div ref={triggerRef}>
-        <div ref={sectionRef} className="h-screen w-[400vw] flex flex-row relative">
-           {children}
+        <div
+          ref={sectionRef}
+          className="h-screen w-[400vw] flex flex-row relative"
+          style={{ willChange: 'transform' }}
+        >
+          {children}
         </div>
       </div>
     </section>

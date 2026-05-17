@@ -26,9 +26,11 @@ export const ProductCard: React.FC<{ product: Product, onQuickView?: () => void 
     >
       <div className="relative aspect-[3/4] overflow-hidden bg-muted mb-6">
         <Link to={`/product/${product.id}`}>
-          <img 
-            src={product.image} 
+          <img
+            src={product.image}
             alt={product.name}
+            width={400}
+            height={533}
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             referrerPolicy="no-referrer"
             loading="lazy"
