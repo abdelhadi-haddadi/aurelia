@@ -1,0 +1,6 @@
+{
+  "name": "AURELIA Luxury Jewelry",
+  "description": "A premium high-end jewelry ecommerce platform featuring cinematic animations, bespoke collections, and a refined luxury shopping experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["ecommerce", "payments", "animations"]
+}
