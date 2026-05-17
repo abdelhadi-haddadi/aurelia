@@ -14,11 +14,10 @@ import { AuroraBackground } from './components/ui/AuroraBackground';
 import { ScrollIndicator } from './components/ui/ScrollIndicator';
 import { AuroraFrame } from './components/ui/AuroraFrame';
 import { WhatsAppFloat } from './components/ui/WhatsAppFloat';
-import { SmoothScroll } from './components/utils/SmoothScroll';
 import { ScrollToTop } from './components/utils/ScrollToTop';
 import { CursorTrail } from './components/ui/CursorTrail';
-import { ProductDetail } from './components/ui/ProductDetail';
-import { SearchPlus } from './components/ui/SearchPlus';
+const ProductDetail = lazy(() => import('./components/ui/ProductDetail').then(m => ({ default: m.ProductDetail })));
+const SearchPlus = lazy(() => import('./components/ui/SearchPlus').then(m => ({ default: m.SearchPlus })));
 import { useStore } from './store/useStore';
 
 // Lazy load pages for performance
@@ -62,12 +61,13 @@ export default function App() {
     <HelmetProvider>
       <AppProvider>
         <Router>
-          <SmoothScroll />
           <ScrollToTop />
-          <SearchPlus 
-            isOpen={isSearchOpen} 
-            onClose={() => setIsSearchOpen(false)} 
-          />
+          <Suspense fallback={null}>
+            <SearchPlus
+              isOpen={isSearchOpen}
+              onClose={() => setIsSearchOpen(false)}
+            />
+          </Suspense>
           <div className="min-h-screen bg-background font-sans transition-colors duration-1000 relative">
             <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:text-xs focus:uppercase focus:tracking-widest">Skip to main content</a>
             <AuroraBackground />
@@ -105,10 +105,12 @@ export default function App() {
             </main>
             <Footer />
             <CartDrawer />
-            <ProductDetail 
-              product={quickViewProduct} 
-              onClose={() => setQuickViewProduct(null)} 
-            />
+            <Suspense fallback={null}>
+              <ProductDetail
+                product={quickViewProduct}
+                onClose={() => setQuickViewProduct(null)}
+              />
+            </Suspense>
           </div>
         </Router>
       </AppProvider>

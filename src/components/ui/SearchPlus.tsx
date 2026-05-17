@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Search, X, ArrowRight, History, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
-import gsap from 'gsap';
 import { useStore } from '@/src/store/useStore';
 
 interface SearchPlusProps {
@@ -56,19 +55,6 @@ export const SearchPlus: React.FC<SearchPlusProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 100);
-      
-      // GSAP Entrance Animation
-      gsap.fromTo(
-        ".search-overlay",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: "power2.out" }
-      );
-      
-      gsap.fromTo(
-        ".search-content-inner",
-        { scale: 0.95, y: 20, opacity: 0 },
-        { scale: 1, y: 0, opacity: 1, duration: 0.6, delay: 0.1, ease: "power3.out" }
-      );
     }
   }, [isOpen]);
 

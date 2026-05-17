@@ -52,24 +52,80 @@
       to { transform: rotate(360deg); }
     }
 
-    @keyframes aurora-border {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
 }
 
+/* Hero entrance animations — CSS-only, zero JS, GPU composited */
+@keyframes charReveal {
+  from { transform: translateY(100px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes heroFadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes heroScaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0);    }
+  50%       { transform: translateX(-50%) translateY(10px); }
+}
+
+/* Navbar entrance animations */
+@keyframes navSlideLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+@keyframes navSlideDown {
+  from { transform: translateY(-10px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes navSlideRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Aurora border — composited translateX/Y (replaces non-composited background-position) */
+@keyframes aurora-slide-x {
+  from { transform: translateX(0%);   }
+  to   { transform: translateX(-50%); }
+}
+@keyframes aurora-slide-y {
+  from { transform: translateY(0%);   }
+  to   { transform: translateY(-50%); }
+}
+
+/* Gradient background — used by Button aurora variant and WhatsApp halo */
 .aurora-border-gradient {
+  background: linear-gradient(90deg, #ff0080, #7928ca, #4facfe, #00f2fe, #ff0080);
+}
+
+/* Animated 1-px border bars — GPU-composited transform (not background-position) */
+.aurora-border-slide-h {
   background: linear-gradient(
     90deg,
-    #ff0080,
-    #7928ca,
-    #4facfe,
-    #00f2fe,
-    #ff0080
+    #ff0080, #7928ca, #4facfe, #00f2fe,
+    #ff0080, #7928ca, #4facfe, #00f2fe, #ff0080
   );
-  background-size: 200% 200%;
-  animation: aurora-border 5s linear infinite;
+  width: 200%;
+  animation: aurora-slide-x 5s linear infinite;
+  will-change: transform;
+}
+
+.aurora-border-slide-v {
+  background: linear-gradient(
+    180deg,
+    #ff0080, #7928ca, #4facfe, #00f2fe,
+    #ff0080, #7928ca, #4facfe, #00f2fe, #ff0080
+  );
+  height: 200%;
+  animation: aurora-slide-y 5s linear infinite;
+  will-change: transform;
 }
 
 :root {

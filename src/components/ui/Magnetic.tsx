@@ -1,51 +1,44 @@
 import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
 
+// CSS-transition-based magnetic effect — zero GSAP dependency, GPU composited.
 export const Magnetic: React.FC<{ children: React.ReactElement, strength?: number }> = ({ children, strength = 40 }) => {
-    const magneticRef = useRef<HTMLDivElement>(null);
+  const magneticRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const xTo = gsap.quickTo(magneticRef.current, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-        const yTo = gsap.quickTo(magneticRef.current, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+  useEffect(() => {
+    const element = magneticRef.current;
+    if (!element) return;
 
-        // Cache rect on mouseenter — eliminates forced layout recalc on every mousemove
-        let rect: DOMRect | null = null;
+    // One-time style setup — composited transform + spring-like cubic-bezier
+    element.style.willChange  = 'transform';
+    element.style.transition  = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
 
-        const onEnter = () => {
-            rect = magneticRef.current?.getBoundingClientRect() ?? null;
-        };
+    let rect: DOMRect | null = null;
 
-        const mouseMove = (e: MouseEvent) => {
-            if (!rect) return;
-            const x = e.clientX - (rect.left + rect.width / 2);
-            const y = e.clientY - (rect.top + rect.height / 2);
-            xTo(x * (strength / 100));
-            yTo(y * (strength / 100));
-        };
+    const onEnter = () => { rect = element.getBoundingClientRect(); };
 
-        const mouseLeave = () => {
-            xTo(0);
-            yTo(0);
-        };
+    const mouseMove = (e: MouseEvent) => {
+      if (!rect) return;
+      const x = (e.clientX - (rect.left + rect.width  / 2)) * (strength / 100);
+      const y = (e.clientY - (rect.top  + rect.height / 2)) * (strength / 100);
+      element.style.transform = `translate(${x}px, ${y}px)`;
+    };
 
-        const element = magneticRef.current;
-        element?.addEventListener('mouseenter', onEnter, { passive: true });
-        element?.addEventListener('mousemove', mouseMove, { passive: true });
-        element?.addEventListener('mouseleave', mouseLeave, { passive: true });
+    const mouseLeave = () => { element.style.transform = 'translate(0, 0)'; };
 
-        // Keep rect fresh on resize
-        const ro = new ResizeObserver(() => {
-            if (element) rect = element.getBoundingClientRect();
-        });
-        if (element) ro.observe(element);
+    element.addEventListener('mouseenter', onEnter,    { passive: true });
+    element.addEventListener('mousemove',  mouseMove,  { passive: true });
+    element.addEventListener('mouseleave', mouseLeave, { passive: true });
 
-        return () => {
-            element?.removeEventListener('mouseenter', onEnter);
-            element?.removeEventListener('mousemove', mouseMove);
-            element?.removeEventListener('mouseleave', mouseLeave);
-            ro.disconnect();
-        };
-    }, [strength]);
+    const ro = new ResizeObserver(() => { rect = element.getBoundingClientRect(); });
+    ro.observe(element);
 
-    return React.cloneElement(children, { ref: magneticRef });
+    return () => {
+      element.removeEventListener('mouseenter', onEnter);
+      element.removeEventListener('mousemove',  mouseMove);
+      element.removeEventListener('mouseleave', mouseLeave);
+      ro.disconnect();
+    };
+  }, [strength]);
+
+  return React.cloneElement(children, { ref: magneticRef });
 };
