@@ -38,18 +38,19 @@ export const ProductCard: React.FC<{ product: Product, onQuickView?: () => void 
         
         {/* Overlay Actions */}
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-          <motion.button 
+          <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={(e) => {
               e.stopPropagation();
               addToCart({ ...product, quantity: 1 });
             }}
+            aria-label={`Add ${product.name} to bag`}
             className="w-12 h-12 bg-white text-black flex items-center justify-center rounded-full shadow-xl"
           >
-            <ShoppingBag size={18} strokeWidth={1.5} />
+            <ShoppingBag size={18} strokeWidth={1.5} aria-hidden="true" />
           </motion.button>
-          <motion.button 
+          <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={(e) => {
@@ -57,14 +58,15 @@ export const ProductCard: React.FC<{ product: Product, onQuickView?: () => void 
               if (onQuickView) onQuickView();
               else setQuickViewProduct(product as any);
             }}
+            aria-label={`Quick view ${product.name}`}
             className="w-12 h-12 bg-white text-black flex items-center justify-center rounded-full shadow-xl"
           >
-            <Eye size={18} strokeWidth={1.5} />
+            <Eye size={18} strokeWidth={1.5} aria-hidden="true" />
           </motion.button>
         </div>
 
-        <button className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors">
-          <Heart size={20} strokeWidth={1} />
+        <button aria-label={`Add ${product.name} to wishlist`} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors">
+          <Heart size={20} strokeWidth={1} aria-hidden="true" />
         </button>
       </div>
 

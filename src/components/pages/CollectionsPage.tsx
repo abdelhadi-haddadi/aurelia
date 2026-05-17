@@ -70,9 +70,11 @@ export const CollectionsPage = () => {
             className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center`}
           >
             <div className="w-full lg:w-1/2 relative aspect-video lg:aspect-square overflow-hidden group cursor-all-scroll">
-              <img 
-                src={collection.image} 
+              <img
+                src={collection.image}
                 alt={collection.name}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />

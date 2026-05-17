@@ -34,11 +34,12 @@ export const CartDrawer = () => {
                 <ShoppingBag size={20} strokeWidth={1} />
                 <h2 className="text-xl font-heading tracking-tight">Shopping Bag ({cart.length})</h2>
               </div>
-              <button 
+              <button
                 onClick={() => setIsCartOpen(false)}
+                aria-label="Close shopping bag"
                 className="hover:opacity-60 transition-opacity"
               >
-                <X size={24} strokeWidth={1} />
+                <X size={24} strokeWidth={1} aria-hidden="true" />
               </button>
             </div>
 
@@ -77,11 +78,12 @@ export const CartDrawer = () => {
                         </div>
                         <div className="flex items-center justify-between">
                           <p className="text-sm tracking-wide font-light">${(item.price * item.quantity).toLocaleString()}</p>
-                          <button 
+                          <button
                             onClick={() => removeFromCart(item.id, item.variant)}
+                            aria-label={`Remove ${item.name} from bag`}
                             className="text-muted-foreground hover:text-destructive transition-colors"
                           >
-                            <Trash2 size={16} strokeWidth={1} />
+                            <Trash2 size={16} strokeWidth={1} aria-hidden="true" />
                           </button>
                         </div>
                       </div>

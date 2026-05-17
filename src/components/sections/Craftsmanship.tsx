@@ -18,7 +18,7 @@ export const Craftsmanship = () => {
         <h2 className="text-8xl md:text-[15rem] font-heading text-white/5 uppercase tracking-tighter absolute">Vision</h2>
         <div className="relative z-10 flex flex-col md:flex-row items-center gap-16">
           <div className="w-full md:w-1/2 aspect-square bg-muted/10 overflow-hidden">
-             <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop" className="w-full h-full object-cover grayscale" alt="Design" />
+             <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop" className="w-full h-full object-cover grayscale" alt="AURELIA design sketch and gemstone selection process" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
           </div>
           <div className="w-full md:w-1/2 max-w-md">
             <span className="text-[10px] uppercase tracking-[0.5em] text-white/40 mb-8 block">Step 02</span>

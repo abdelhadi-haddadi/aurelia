@@ -24,9 +24,11 @@ export const Newsletter = () => {
           </p>
 
           <form className="w-full max-w-md flex flex-col md:flex-row gap-4">
-            <Input 
-              type="email" 
-              placeholder="Email Address" 
+            <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+            <Input
+              id="newsletter-email"
+              type="email"
+              placeholder="Email Address"
               className="h-14 bg-background border-border rounded-none text-xs uppercase tracking-widest px-6"
             />
             <Button className="h-14 px-10 bg-primary text-primary-foreground rounded-none text-[10px] uppercase tracking-widest">

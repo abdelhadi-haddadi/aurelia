@@ -26,8 +26,8 @@ export const Navbar = () => {
           className="flex-1 flex items-center gap-4 md:gap-8 overflow-hidden"
         >
           <Magnetic>
-            <button onClick={() => setIsMenuOpen(true)} className="text-foreground hover:opacity-70 transition-opacity shrink-0">
-              <Menu size={20} strokeWidth={1} />
+            <button onClick={() => setIsMenuOpen(true)} aria-label="Open navigation menu" className="text-foreground hover:opacity-70 transition-opacity shrink-0">
+              <Menu size={20} strokeWidth={1} aria-hidden="true" />
             </button>
           </Magnetic>
           <div className="hidden md:flex items-center gap-6 text-[10px] uppercase tracking-[0.2em] text-foreground/60 whitespace-nowrap">
@@ -55,21 +55,23 @@ export const Navbar = () => {
           className="flex-1 flex items-center justify-end gap-3 md:gap-6"
         >
           <Magnetic>
-            <button 
+            <button
               onClick={() => setIsSearchOpen(true)}
+              aria-label="Open search"
               className="text-foreground hover:opacity-70 transition-opacity"
             >
-              <Search size={20} strokeWidth={1} />
+              <Search size={20} strokeWidth={1} aria-hidden="true" />
             </button>
           </Magnetic>
           
           <div className="group relative">
             <Magnetic>
-              <button 
+              <button
                 onClick={() => navigate(user ? (user.isAdmin ? '/admin' : '/dashboard') : '/login')}
+                aria-label={user ? `Account: ${user.name}` : 'Sign in to your account'}
                 className="text-foreground hover:opacity-70 transition-opacity flex items-center gap-2"
               >
-                <User size={20} strokeWidth={1} />
+                <User size={20} strokeWidth={1} aria-hidden="true" />
                 {user && <span className="text-[9px] uppercase tracking-tighter hidden md:block">{user.name}</span>}
               </button>
             </Magnetic>
@@ -84,11 +86,12 @@ export const Navbar = () => {
           </div>
 
           <Magnetic>
-            <button 
+            <button
               onClick={() => setIsCartOpen(true)}
+              aria-label={`Shopping bag${cartCount > 0 ? `, ${cartCount} items` : ', empty'}`}
               className="relative text-foreground hover:opacity-70 transition-opacity"
             >
-              <ShoppingBag size={20} strokeWidth={1} />
+              <ShoppingBag size={20} strokeWidth={1} aria-hidden="true" />
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {cartCount}
@@ -117,21 +120,22 @@ export const Navbar = () => {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed top-0 left-0 bottom-0 w-full max-w-sm bg-background border-r border-border z-[70] p-12 flex flex-col"
             >
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(false)}
+                aria-label="Close navigation menu"
                 className="self-end hover:opacity-70 mb-12"
               >
-                <X size={24} strokeWidth={1} />
+                <X size={24} strokeWidth={1} aria-hidden="true" />
               </button>
 
               <div className="flex flex-col gap-8 flex-grow">
                 {[
                   { label: 'Home', path: '/' },
                   { label: 'The Catalog', path: '/catalog' },
-                  { label: 'New Arrivals', path: '#' },
-                  { label: 'Bespoke Services', path: '#' },
-                  { label: 'High Jewelry', path: '#' },
-                  { label: 'Watchmaking', path: '#' }
+                  { label: 'New Arrivals', path: '/new-arrivals' },
+                  { label: 'Bespoke Services', path: '/bespoke' },
+                  { label: 'High Jewelry', path: '/high-jewelry' },
+                  { label: 'Watchmaking', path: '/watchmaking' }
                 ].map((item) => (
                   <motion.div key={item.label} whileHover={{ x: 10 }}>
                     <Link

@@ -36,30 +36,30 @@ export const CheckoutPage = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-[9px] uppercase tracking-widest opacity-60">First Name</Label>
-                  <Input className="rounded-none h-12 bg-muted/20 border-border" />
+                  <Label htmlFor="first-name" className="text-[9px] uppercase tracking-widest opacity-60">First Name</Label>
+                  <Input id="first-name" autoComplete="given-name" className="rounded-none h-12 bg-muted/20 border-border" />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-[9px] uppercase tracking-widest opacity-60">Last Name</Label>
-                  <Input className="rounded-none h-12 bg-muted/20 border-border" />
+                  <Label htmlFor="last-name" className="text-[9px] uppercase tracking-widest opacity-60">Last Name</Label>
+                  <Input id="last-name" autoComplete="family-name" className="rounded-none h-12 bg-muted/20 border-border" />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label className="text-[9px] uppercase tracking-widest opacity-60">Address</Label>
-                <Input className="rounded-none h-12 bg-muted/20 border-border" />
+                <Label htmlFor="address" className="text-[9px] uppercase tracking-widest opacity-60">Address</Label>
+                <Input id="address" autoComplete="street-address" className="rounded-none h-12 bg-muted/20 border-border" />
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-[9px] uppercase tracking-widest opacity-60">City</Label>
-                  <Input className="rounded-none h-12 bg-muted/20 border-border" />
+                  <Label htmlFor="city" className="text-[9px] uppercase tracking-widest opacity-60">City</Label>
+                  <Input id="city" autoComplete="address-level2" className="rounded-none h-12 bg-muted/20 border-border" />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-[9px] uppercase tracking-widest opacity-60">Postal Code</Label>
-                  <Input className="rounded-none h-12 bg-muted/20 border-border" />
+                  <Label htmlFor="postal-code" className="text-[9px] uppercase tracking-widest opacity-60">Postal Code</Label>
+                  <Input id="postal-code" autoComplete="postal-code" className="rounded-none h-12 bg-muted/20 border-border" />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-[9px] uppercase tracking-widest opacity-60">Country</Label>
-                  <Input className="rounded-none h-12 bg-muted/20 border-border" />
+                  <Label htmlFor="country" className="text-[9px] uppercase tracking-widest opacity-60">Country</Label>
+                  <Input id="country" autoComplete="country-name" className="rounded-none h-12 bg-muted/20 border-border" />
                 </div>
               </div>
             </div>
@@ -78,17 +78,17 @@ export const CheckoutPage = () => {
                 </p>
               </div>
               <div className="space-y-2">
-                <Label className="text-[9px] uppercase tracking-widest opacity-60">Card Number</Label>
-                <Input placeholder="•••• •••• •••• ••••" className="rounded-none h-12 bg-muted/20 border-border" />
+                <Label htmlFor="card-number" className="text-[9px] uppercase tracking-widest opacity-60">Card Number</Label>
+                <Input id="card-number" autoComplete="cc-number" placeholder="•••• •••• •••• ••••" className="rounded-none h-12 bg-muted/20 border-border" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-[9px] uppercase tracking-widest opacity-60">Expiry Date</Label>
-                  <Input placeholder="MM / YY" className="rounded-none h-12 bg-muted/20 border-border" />
+                  <Label htmlFor="expiry" className="text-[9px] uppercase tracking-widest opacity-60">Expiry Date</Label>
+                  <Input id="expiry" autoComplete="cc-exp" placeholder="MM / YY" className="rounded-none h-12 bg-muted/20 border-border" />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-[9px] uppercase tracking-widest opacity-60">CVC</Label>
-                  <Input placeholder="•••" className="rounded-none h-12 bg-muted/20 border-border" />
+                  <Label htmlFor="cvc" className="text-[9px] uppercase tracking-widest opacity-60">CVC</Label>
+                  <Input id="cvc" autoComplete="cc-csc" placeholder="•••" className="rounded-none h-12 bg-muted/20 border-border" />
                 </div>
               </div>
             </div>

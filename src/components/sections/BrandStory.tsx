@@ -17,9 +17,11 @@ export const BrandStory = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <motion.div style={{ scale, opacity }} className="relative aspect-[4/5] overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop" 
-              alt="Craftsmanship" 
+            <img
+              src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop"
+              alt="AURELIA master jeweler crafting a high jewelry piece in the Paris atelier"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000"
               referrerPolicy="no-referrer"
             />

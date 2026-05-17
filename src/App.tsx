@@ -39,6 +39,10 @@ const CareGuidePage = lazy(() => import('./components/pages/CareGuidePage').then
 const ContactPage = lazy(() => import('./components/pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const JournalPage = lazy(() => import('./components/pages/JournalPage').then(m => ({ default: m.JournalPage })));
 const ArticlePage = lazy(() => import('./components/pages/ArticlePage').then(m => ({ default: m.ArticlePage })));
+const NewArrivalsPage = lazy(() => import('./components/pages/NewArrivalsPage').then(m => ({ default: m.NewArrivalsPage })));
+const BespokeServicesPage = lazy(() => import('./components/pages/BespokeServicesPage').then(m => ({ default: m.BespokeServicesPage })));
+const HighJewelryPage = lazy(() => import('./components/pages/HighJewelryPage').then(m => ({ default: m.HighJewelryPage })));
+const WatchmakingPage = lazy(() => import('./components/pages/WatchmakingPage').then(m => ({ default: m.WatchmakingPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -65,13 +69,14 @@ export default function App() {
             onClose={() => setIsSearchOpen(false)} 
           />
           <div className="min-h-screen bg-background font-sans transition-colors duration-1000 relative">
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:text-xs focus:uppercase focus:tracking-widest">Skip to main content</a>
             <AuroraBackground />
             <AuroraFrame />
             <CursorTrail />
             <WhatsAppFloat />
             <ScrollIndicator />
             <Navbar />
-            <main>
+            <main id="main-content">
               <Suspense fallback={<PageLoader />}>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
@@ -91,6 +96,10 @@ export default function App() {
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/journal" element={<JournalPage />} />
                   <Route path="/journal/:id" element={<ArticlePage />} />
+                  <Route path="/new-arrivals" element={<NewArrivalsPage />} />
+                  <Route path="/bespoke" element={<BespokeServicesPage />} />
+                  <Route path="/high-jewelry" element={<HighJewelryPage />} />
+                  <Route path="/watchmaking" element={<WatchmakingPage />} />
                 </Routes>
               </Suspense>
             </main>

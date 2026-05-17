@@ -10,7 +10,7 @@ export const ArticlePage = () => {
   // In a real app, fetch based on ID. For now, we simulate a single high-quality layout.
   return (
     <>
-      <SEO title="Journal Entry" description="Exploring the depths of AURELIA craftsmanship." />
+      <SEO title="Journal Entry" description="Exploring the depths of AURELIA craftsmanship." canonical={`https://aurelia-jewelry.com/journal/${id}`} />
       <div className="min-h-screen pt-32 pb-24">
         <div className="max-w-4xl mx-auto px-6">
           <Link to="/journal" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500 hover:text-white transition-colors mb-20 group">
@@ -38,9 +38,12 @@ export const ArticlePage = () => {
             </header>
 
             <div className="aspect-[16/9] w-full overflow-hidden bg-zinc-900 border border-white/5">
-              <img 
-                src="https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=2000&auto=format&fit=crop" 
-                alt="Vendôme Paris" 
+              <img
+                src="https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=2000&auto=format&fit=crop"
+                alt="Place Vendôme, Paris — inspiration for AURELIA high jewelry silhouettes"
+                fetchPriority="high"
+                decoding="async"
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover grayscale opacity-70"
               />
             </div>

@@ -52,9 +52,12 @@ export const JournalPage = () => {
             >
               <Link to={`/journal/${article.id}`} className="block space-y-8">
                 <div className="aspect-[4/5] overflow-hidden bg-zinc-900 border border-white/5">
-                  <img 
-                    src={article.image} 
+                  <img
+                    src={article.image}
                     alt={article.title}
+                    loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100"
                   />
                 </div>

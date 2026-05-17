@@ -12,10 +12,13 @@ export const TheBrandPage = () => {
       <div className="min-h-screen bg-black text-white">
       {/* Immersive Brand Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <video 
-          autoPlay 
-          muted 
-          loop 
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover opacity-60 scale-110"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-slow-motion-of-a-woman-wearing-a-diamond-necklace-4414-large.mp4" type="video/mp4" />

@@ -61,21 +61,21 @@ export const ContactPage = () => {
               <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-zinc-500">First Name</label>
-                      <input type="text" className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light" />
+                      <label htmlFor="contact-first-name" className="text-[10px] uppercase tracking-widest text-zinc-500">First Name</label>
+                      <input id="contact-first-name" type="text" autoComplete="given-name" className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light" />
                    </div>
                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-zinc-500">Last Name</label>
-                      <input type="text" className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light" />
+                      <label htmlFor="contact-last-name" className="text-[10px] uppercase tracking-widest text-zinc-500">Last Name</label>
+                      <input id="contact-last-name" type="text" autoComplete="family-name" className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light" />
                    </div>
                 </div>
                 <div className="space-y-2">
-                   <label className="text-[10px] uppercase tracking-widest text-zinc-500">Email Address</label>
-                   <input type="email" className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light" />
+                   <label htmlFor="contact-email" className="text-[10px] uppercase tracking-widest text-zinc-500">Email Address</label>
+                   <input id="contact-email" type="email" autoComplete="email" className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light" />
                 </div>
                 <div className="space-y-2">
-                   <label className="text-[10px] uppercase tracking-widest text-zinc-500">Message</label>
-                   <textarea rows={4} className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light resize-none" />
+                   <label htmlFor="contact-message" className="text-[10px] uppercase tracking-widest text-zinc-500">Message</label>
+                   <textarea id="contact-message" rows={4} className="w-full bg-transparent border-b border-white/20 py-2 focus:border-primary outline-none transition-colors text-white font-light resize-none" />
                 </div>
               </div>
               <button className="w-full py-5 bg-white text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-primary transition-colors hover:text-white">

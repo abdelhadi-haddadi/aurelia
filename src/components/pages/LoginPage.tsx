@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '../ui/SEO';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -23,13 +24,16 @@ export const LoginPage = () => {
   };
 
   return (
+    <>
+    <SEO title="Maison Access" description="Sign in to your private AURELIA account or access the administration terminal." />
     <div className="min-h-screen flex">
       {/* Visual Side */}
       <div className="hidden lg:block w-1/2 relative bg-black">
-        <img 
-          src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop" 
+        <img
+          src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop"
           className="w-full h-full object-cover opacity-60 grayscale"
-          alt="Luxury"
+          alt="AURELIA Paris atelier — private access"
+          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 flex items-center justify-center p-24">
           <div className="text-center">
@@ -53,26 +57,28 @@ export const LoginPage = () => {
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div className="space-y-2">
-              <Label className="text-[10px] uppercase tracking-widest text-muted-foreground">Email Address</Label>
-              <Input 
-                type="email" 
+              <Label htmlFor="login-email" className="text-[10px] uppercase tracking-widest text-muted-foreground">Email Address</Label>
+              <Input
+                id="login-email"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@maison.com" 
+                placeholder="email@maison.com"
                 className="h-14 rounded-none border-border bg-muted/20"
                 required
               />
             </div>
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <Label className="text-[10px] uppercase tracking-widest text-muted-foreground">Password</Label>
+                <Label htmlFor="login-password" className="text-[10px] uppercase tracking-widest text-muted-foreground">Password</Label>
                 <button type="button" className="text-[9px] uppercase tracking-widest underline underline-offset-4 opacity-60 hover:opacity-100">Forgot Password?</button>
               </div>
-              <Input 
-                type="password" 
+              <Input
+                id="login-password"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••" 
+                placeholder="••••••••"
                 className="h-14 rounded-none border-border bg-muted/20"
                 required
               />
@@ -90,5 +96,6 @@ export const LoginPage = () => {
         </motion.div>
       </div>
     </div>
+    </>
   );
 };

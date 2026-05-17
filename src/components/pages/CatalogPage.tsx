@@ -47,9 +47,10 @@ export const CatalogPage = () => {
       <div className="flex flex-col lg:flex-row gap-12 mb-16 items-center justify-between border-b border-border pb-8">
         <div className="flex gap-8 overflow-x-auto w-full lg:w-auto no-scrollbar py-2">
           {categories.map((cat) => (
-            <button 
+            <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
+              aria-pressed={activeCategory === cat}
               className={`text-[10px] uppercase tracking-[0.3em] transition-all whitespace-nowrap ${activeCategory === cat ? 'font-bold underline underline-offset-8 text-primary' : 'text-muted-foreground hover:text-primary'}`}
             >
               {cat}

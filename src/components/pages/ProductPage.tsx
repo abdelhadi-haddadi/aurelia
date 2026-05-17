@@ -140,11 +140,12 @@ export const ProductPage = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={product.name}
         description={`Exquisite ${product.name} from AURELIA. Masterfully crafted with the finest materials and artistic vision.`}
         ogImage={product.image}
         ogType="product"
+        canonical={`https://aurelia-jewelry.com/product/${product.id}`}
       />
       <div ref={containerRef} className="min-h-screen pt-32 pb-24 px-6 max-w-[1400px] mx-auto">
       {/* Breadcrumbs */}
@@ -193,7 +194,7 @@ export const ProductPage = () => {
            <div className="grid grid-cols-4 gap-4 detail-img-grid">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="aspect-square bg-muted overflow-hidden opacity-60 hover:opacity-100 transition-opacity cursor-pointer detail-img">
-                  <img src={product.image} className={`w-full h-full object-cover ${selectedMetal === 'Rose Gold' ? 'sepia-[0.3]' : selectedMetal === 'Platinum' ? 'grayscale-[0.3]' : ''}`} alt="Detail" />
+                  <img src={product.image} className={`w-full h-full object-cover ${selectedMetal === 'Rose Gold' ? 'sepia-[0.3]' : selectedMetal === 'Platinum' ? 'grayscale-[0.3]' : ''}`} alt={`${product.name} — detail view ${i}`} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                 </div>
               ))}
            </div>
@@ -269,29 +270,32 @@ export const ProductPage = () => {
            <div className="flex items-center gap-6 mb-16 py-6 border-y border-border/50">
              <span className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground mr-2 font-bold italic">Share Masterpiece</span>
              <div className="flex items-center gap-6">
-               <a 
-                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} 
-                 target="_blank" 
-                 rel="noreferrer" 
+               <a
+                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                 target="_blank"
+                 rel="noreferrer"
+                 aria-label={`Share ${product.name} on Facebook`}
                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Facebook size={16} strokeWidth={1.2} />
+                  <Facebook size={16} strokeWidth={1.2} aria-hidden="true" />
                 </a>
-                <a 
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`A masterpiece from AURELIA: ${product.name}`)}&url=${encodeURIComponent(window.location.href)}`} 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`A masterpiece from AURELIA: ${product.name}`)}&url=${encodeURIComponent(window.location.href)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Share ${product.name} on Twitter`}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Twitter size={16} strokeWidth={1.2} />
+                  <Twitter size={16} strokeWidth={1.2} aria-hidden="true" />
                 </a>
-                <a 
-                  href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(window.location.href)}&media=${encodeURIComponent(product.image)}&description=${encodeURIComponent(`Discover ${product.name} at AURELIA.`)}`} 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(window.location.href)}&media=${encodeURIComponent(product.image)}&description=${encodeURIComponent(`Discover ${product.name} at AURELIA.`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Pin ${product.name} on Pinterest`}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Instagram size={16} strokeWidth={1.2} />
+                  <Instagram size={16} strokeWidth={1.2} aria-hidden="true" />
                 </a>
              </div>
            </div>

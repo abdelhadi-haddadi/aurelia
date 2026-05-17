@@ -15,9 +15,9 @@ export const Footer = () => {
               Experience the pinnacle of luxury jewelry design. Join our exclusive world and receive updates on new collections and private exhibitions.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="hover:opacity-60 transition-opacity"><Instagram size={20} strokeWidth={1} /></a>
-              <a href="#" className="hover:opacity-60 transition-opacity"><Twitter size={20} strokeWidth={1} /></a>
-              <a href="#" className="hover:opacity-60 transition-opacity"><Facebook size={20} strokeWidth={1} /></a>
+              <a href="#" aria-label="Follow AURELIA on Instagram" className="hover:opacity-60 transition-opacity"><Instagram size={20} strokeWidth={1} aria-hidden="true" /></a>
+              <a href="#" aria-label="Follow AURELIA on Twitter" className="hover:opacity-60 transition-opacity"><Twitter size={20} strokeWidth={1} aria-hidden="true" /></a>
+              <a href="#" aria-label="Follow AURELIA on Facebook" className="hover:opacity-60 transition-opacity"><Facebook size={20} strokeWidth={1} aria-hidden="true" /></a>
             </div>
           </div>
 

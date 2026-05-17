@@ -23,6 +23,7 @@ export const WhatsAppFloat = () => {
       {/* Button Container */}
       <button
         onClick={handleClick}
+        aria-label="Chat with AURELIA concierge on WhatsApp"
         className="relative w-16 h-16 rounded-full p-[2px] aurora-border-gradient shadow-2xl overflow-hidden cursor-pointer"
       >
         <div className="w-full h-full rounded-full bg-black flex items-center justify-center transition-colors group-hover:bg-black/80">

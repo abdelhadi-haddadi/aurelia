@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /checkout
+Disallow: /login
 Sitemap: https://aurelia-jewelry.com/sitemap.xml
